@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int num, product = 1, remainder;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Work with positive numbers
+    if (num < 0) {
+        num = -num;
+    }
+
+    // Special case: if number is 0, product should be 0
+    if (num == 0) {
+        product = 0;
+    } else {
+        while (num != 0) {
+            remainder = num % 10;     // extract last digit
+            product *= remainder;     // multiply into product
+            num = num / 10;           // remove last digit
+        }
+    }
+
+    printf("Product of digits = %d\n", product);
+
+    return 0;
+}
