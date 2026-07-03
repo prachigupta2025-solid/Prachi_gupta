@@ -1,0 +1,13 @@
+int main() {
+    int num1, num2, lcm;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+
+    // LCM formula: (num1 * num2) / GCD(num1, num2)
+    lcm = (num1 * num2) / gcd(num1, num2);
+
+    printf("LCM of %d and %d = %d\n", num1, num2, lcm);
+
+    return 0;
+}
