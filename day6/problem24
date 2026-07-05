@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int x, n;
+    long long result = 1;  // Use long long for larger results
+
+    printf("Enter base (x): ");
+    scanf("%d", &x);
+
+    printf("Enter exponent (n): ");
+    scanf("%d", &n);
+
+    // Handle positive exponent
+    if (n >= 0) {
+        for (int i = 1; i <= n; i++) {
+            result *= x;
+        }
+        printf("%d^%d = %lld\n", x, n, result);
+    } else {
+        // For negative exponents, show fractional result
+        for (int i = 1; i <= -n; i++) {
+            result *= x;
+        }
+        printf("%d^%d = 1/%lld\n", x, n, result);
+    }
+
+    return 0;
+}

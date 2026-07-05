@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int num, count = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    int temp = num;
+
+    // Count set bits
+    while (temp > 0) {
+        if (temp & 1) {   // Check if last bit is 1
+            count++;
+        }
+        temp >>= 1;       // Right shift by 1
+    }
+
+    printf("Number of set bits in %d is %d\n", num, count);
+
+    return 0;
+}
