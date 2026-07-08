@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+int main() {
+    int choice, score = 0;
+
+    printf("===== Welcome to the Quiz Application =====\n\n");
+
+    // Question 1
+    printf("Q1. What is the capital of India?\n");
+    printf("1. Mumbai\n2. Delhi\n3. Kolkata\n4. Chennai\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+    if (choice == 2) {
+        printf("✅ Correct!\n\n");
+        score++;
+    } else {
+        printf("❌ Wrong! The correct answer is Delhi.\n\n");
+    }
+
+    // Question 2
+    printf("Q2. Who is known as the Father of the Nation in India?\n");
+    printf("1. Jawaharlal Nehru\n2. Mahatma Gandhi\n3. B. R. Ambedkar\n4. Subhash Chandra Bose\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+    if (choice == 2) {
+        printf("✅ Correct!\n\n");
+        score++;
+    } else {
+        printf("❌ Wrong! The correct answer is Mahatma Gandhi.\n\n");
+    }
+
+    // Question 3
+    printf("Q3. Which language is used to write operating systems?\n");
+    printf("1. Python\n2. C\n3. Java\n4. HTML\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+    if (choice == 2) {
+        printf("✅ Correct!\n\n");
+        score++;
+    } else {
+        printf("❌ Wrong! The correct answer is C.\n\n");
+    }
+
+    // Final Score
+    printf("===== Quiz Over =====\n");
+    printf("Your final score is: %d/3\n", score);
+
+    if (score == 3) {
+        printf("🎉 Excellent! You got all correct.\n");
+    } else if (score == 2) {
+        printf("👍 Good job! You got 2 correct.\n");
+    } else if (score == 1) {
+        printf("🙂 Keep practicing! You got 1 correct.\n");
+    } else {
+        printf("😅 Better luck next time!\n");
+    }
+
+    return 0;
+}
