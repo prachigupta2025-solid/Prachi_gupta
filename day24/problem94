@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[200];
+    int i, count;
+
+    printf("Enter a string: ");
+    scanf("%s", str);  // Reads string without spaces
+
+    printf("Compressed string: ");
+    for (i = 0; i < strlen(str); i++) {
+        count = 1;
+
+        // Count consecutive repeating characters
+        while (i < strlen(str) - 1 && str[i] == str[i + 1]) {
+            count++;
+            i++;
+        }
+
+        // Print character and its count
+        printf("%c%d", str[i], count);
+    }
+
+    printf("\n");
+    return 0;
+}

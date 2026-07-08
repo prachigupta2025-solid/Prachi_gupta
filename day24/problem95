@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char str[200];
+    char longest[50];
+    int maxLen = 0, i = 0, j = 0;
+
+    printf("Enter a sentence: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Remove newline if present
+    str[strcspn(str, "\n")] = '\0';
+
+    while (str[i] != '\0') {
+        char word[50];
+        j = 0;
+
+        // Extract one word
+        while (str[i] != '\0' && !isspace(str[i])) {
+            word[j++] = str[i++];
+        }
+        word[j] = '\0';
+
+        // Check length
+        if (j > maxLen) {
+            maxLen = j;
+            strcpy(longest, word);
+        }
+
+        // Skip spaces
+        while (str[i] != '\0' && isspace(str[i])) {
+            i++;
+        }
+    }
+
+    if (maxLen > 0) {
+        printf("Longest word: %s (length %d)\n", longest, maxLen);
+    } else {
+        printf("No words found.\n");
+    }
+
+    return 0;
+}
