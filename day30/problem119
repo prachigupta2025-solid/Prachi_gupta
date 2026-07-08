@@ -1,0 +1,127 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Employee {
+    int id;
+    char name[50];
+    char department[30];
+    float salary;
+};
+
+int main() {
+    struct Employee employees[50]; // mini system with up to 50 employees
+    int count = 0, choice, i, id;
+    char searchName[50];
+
+    do {
+        printf("\n===== Mini Employee Management System =====\n");
+        printf("1. Add Employee\n");
+        printf("2. Display All Employees\n");
+        printf("3. Search by ID\n");
+        printf("4. Search by Name\n");
+        printf("5. Update Salary\n");
+        printf("6. Delete Employee\n");
+        printf("7. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: // Add Employee
+                printf("Enter Employee ID: ");
+                scanf("%d", &employees[count].id);
+                printf("Enter Name: ");
+                scanf("%s", employees[count].name);
+                printf("Enter Department: ");
+                scanf("%s", employees[count].department);
+                printf("Enter Salary: ");
+                scanf("%f", &employees[count].salary);
+                count++;
+                printf("Employee added successfully!\n");
+                break;
+
+            case 2: // Display Employees
+                printf("\n--- Employee Records ---\n");
+                for (i = 0; i < count; i++) {
+                    printf("ID: %d | Name: %s | Dept: %s | Salary: %.2f\n",
+                           employees[i].id, employees[i].name,
+                           employees[i].department, employees[i].salary);
+                }
+                break;
+
+            case 3: // Search by ID
+                printf("Enter Employee ID to search: ");
+                scanf("%d", &id);
+                for (i = 0; i < count; i++) {
+                    if (employees[i].id == id) {
+                        printf("Found: ID: %d | Name: %s | Dept: %s | Salary: %.2f\n",
+                               employees[i].id, employees[i].name,
+                               employees[i].department, employees[i].salary);
+                        break;
+                    }
+                }
+                if (i == count) {
+                    printf("No employee found with ID %d.\n", id);
+                }
+                break;
+
+            case 4: // Search by Name
+                printf("Enter Name to search: ");
+                scanf("%s", searchName);
+                for (i = 0; i < count; i++) {
+                    if (strcmp(employees[i].name, searchName) == 0) {
+                        printf("Found: ID: %d | Name: %s | Dept: %s | Salary: %.2f\n",
+                               employees[i].id, employees[i].name,
+                               employees[i].department, employees[i].salary);
+                        break;
+                    }
+                }
+                if (i == count) {
+                    printf("No employee found with Name %s.\n", searchName);
+                }
+                break;
+
+            case 5: // Update Salary
+                printf("Enter Employee ID to update salary: ");
+                scanf("%d", &id);
+                for (i = 0; i < count; i++) {
+                    if (employees[i].id == id) {
+                        printf("Enter new salary: ");
+                        scanf("%f", &employees[i].salary);
+                        printf("Salary updated successfully!\n");
+                        break;
+                    }
+                }
+                if (i == count) {
+                    printf("No employee found with ID %d.\n", id);
+                }
+                break;
+
+            case 6: // Delete Employee
+                printf("Enter Employee ID to delete: ");
+                scanf("%d", &id);
+                for (i = 0; i < count; i++) {
+                    if (employees[i].id == id) {
+                        for (int j = i; j < count - 1; j++) {
+                            employees[j] = employees[j + 1];
+                        }
+                        count--;
+                        printf("Employee deleted successfully!\n");
+                        break;
+                    }
+                }
+                if (i == count) {
+                    printf("No employee found with ID %d.\n", id);
+                }
+                break;
+
+            case 7:
+                printf("Exiting Employee Management System. Goodbye!\n");
+                break;
+
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    } while (choice != 7);
+
+    return 0;
+}
